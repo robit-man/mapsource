@@ -1,0 +1,92 @@
+{
+  "name": "mapsource",
+  "version": "0.1.0",
+  "description": "Official typed TypeScript client and machine-readable contract for Mapsource OpenStreetMap and geospatial APIs.",
+  "type": "module",
+  "packageManager": "npm@11.19.1",
+  "license": "MIT",
+  "author": "Mapsource",
+  "homepage": "https://mapsource.io/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robit-man/mapsource.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robit-man/mapsource/issues"
+  },
+  "keywords": [
+    "mapsource",
+    "openstreetmap",
+    "overpass-api",
+    "geospatial",
+    "routing",
+    "geocoding",
+    "map-tiles",
+    "elevation",
+    "geojson",
+    "typescript"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20.19"
+  },
+  "files": [
+    "dist",
+    "contracts",
+    "docs",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE",
+    "llms.txt"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./catalog": {
+      "types": "./dist/catalog.d.ts",
+      "import": "./dist/catalog.js"
+    },
+    "./openapi.json": "./contracts/openapi.json",
+    "./mcp.json": "./contracts/mcp.json",
+    "./llms.txt": "./llms.txt",
+    "./llms-full.txt": "./contracts/llms-full.txt",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mapsource": "./dist/cli.js"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "sync:contracts": "node scripts/sync-contracts.mjs",
+    "generate:types": "openapi-typescript contracts/openapi.json -o src/generated/openapi.d.ts",
+    "build": "npm run clean && npm run generate:types && tsc -p tsconfig.build.json",
+    "typecheck": "npm run generate:types && tsc --noEmit",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:smoke": "node scripts/smoke-package.mjs",
+    "check:package": "node scripts/check-package.mjs",
+    "validate": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run test:smoke && npm run check:package",
+    "validate:release": "node scripts/release-check.mjs",
+    "publish:verified": "node scripts/publish.mjs",
+    "prepublishOnly": "npm run validate"
+  },
+  "dependencies": {
+    "openapi-fetch": "0.17.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.3.1",
+    "eslint": "10.9.0",
+    "openapi-typescript": "7.13.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2",
+    "typescript-eslint": "8.69.0",
+    "vitest": "4.1.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

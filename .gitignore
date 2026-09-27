@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+.mapsource-contract-sync-*/
+.mapsource-release-*/
+*.tgz
+*.cdx.json
+.env
+.env.*
+!.env.example

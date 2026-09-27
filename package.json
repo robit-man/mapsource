@@ -55,7 +55,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "mapsource": "./dist/cli.js"
+    "mapsource": "dist/cli.js"
   },
   "scripts": {
     "clean": "node scripts/clean.mjs",

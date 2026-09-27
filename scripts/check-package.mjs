@@ -15,6 +15,7 @@ const catalog = await readFile(
   "utf8",
 );
 const docs = await readFile(resolve(root, "docs/operations.md"), "utf8");
+const cli = await readFile(resolve(root, "dist/cli.js"), "utf8");
 
 const ids = new Set();
 for (const item of Object.values(openapi.paths))
@@ -28,6 +29,13 @@ for (const item of Object.values(openapi.paths))
   }
 if (pkg.name !== "mapsource" || pkg.private)
   throw new Error("Package identity is not publishable as mapsource");
+if (
+  pkg.bin?.mapsource !== "dist/cli.js" ||
+  !cli.startsWith("#!/usr/bin/env node\n")
+)
+  throw new Error(
+    "The mapsource CLI must use a normalized bin path and retain its shebang",
+  );
 if (ids.size !== 61)
   throw new Error(
     `OpenAPI contains ${ids.size} method operations, expected 61`,

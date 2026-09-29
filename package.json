@@ -1,6 +1,6 @@
 {
   "name": "mapsource",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Official typed TypeScript client and machine-readable contract for Mapsource OpenStreetMap and geospatial APIs.",
   "type": "module",
   "packageManager": "npm@11.19.1",

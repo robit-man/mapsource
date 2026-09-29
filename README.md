@@ -30,6 +30,10 @@ console.log(data);
 
 The path, query, body, and response are inferred from the published OpenAPI contract. `createClient()` also reads `MAPSOURCE_API_KEY` automatically in Node.js. Browser applications should call Mapsource through their own backend so a subscription key is not exposed in shipped JavaScript.
 
+## Base URL
+
+The client calls `https://api.mapsource.io` by default, using the canonical `/api/...` paths from the OpenAPI contract (`/api/interpreter`, `/api/status`, …). On that host every path also works without the `/api` prefix (`https://api.mapsource.io/interpreter`, `https://api.mapsource.io/{key}/interpreter`), which helps when a raw HTTP tool or legacy Overpass client builds URLs itself. `https://mapsource.io` serves the prefixed paths as an alias. Pass `baseUrl` to `createClient()` to override the origin.
+
 ## Every offering, one generated contract
 
 The package contains the complete synchronized machine surface:

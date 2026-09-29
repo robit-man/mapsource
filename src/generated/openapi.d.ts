@@ -1404,6 +1404,10 @@ export interface operations {
                         overpass: {
                             /** @description True when the engine answers and reports a parseable version. */
                             ready: boolean;
+                            /** @description Whether sentinel objects and densities every complete planet holds are present; false means results are missing data, null means not yet measured. */
+                            complete: boolean | null;
+                            /** @description When completeness was last measured. */
+                            completenessCheckedAt: string | null;
                             /** @description Overpass API semantic version reported by the running engine; null only while it cannot be read. */
                             version: string | null;
                             /** @description Source commit the engine binary was built from. */
@@ -1447,6 +1451,47 @@ export interface operations {
                             };
                             /** @description Why a value is null, when one is. */
                             detail: string | null;
+                        }[];
+                        /** @description Index state per service, with measured progress for builds in flight. */
+                        indexes: {
+                            id: string;
+                            /** @enum {string} */
+                            service: "overpass" | "vector-tiles" | "tiles" | "routing" | "local-search" | "contours" | "places";
+                            label: string;
+                            /** @enum {string} */
+                            state: "ready" | "degraded" | "building" | "failed" | "unknown";
+                            /** @description When the serving index was built or its data was cut. */
+                            builtAt: string | null;
+                            detail: string | null;
+                            builds: {
+                                id: string;
+                                /** @description What is being built, such as the generation name. */
+                                target: string;
+                                /** @enum {string} */
+                                state: "building" | "complete" | "failed";
+                                phase: string;
+                                phaseIndex: number;
+                                phaseCount: number;
+                                phases: {
+                                    id: string;
+                                    label: string;
+                                    /** @enum {string} */
+                                    state: "pending" | "active" | "done" | "failed";
+                                    /** @description Fraction complete, measured from the input the step has consumed; null when the step reports no measurable progress. */
+                                    progress: number | null;
+                                    bytesDone: number | null;
+                                    bytesTotal: number | null;
+                                    /** @description Remaining time at the rate observed over the last ten minutes; null until two samples exist. */
+                                    etaSeconds: number | null;
+                                    detail: string | null;
+                                }[];
+                                detail: string | null;
+                                /**
+                                 * Format: date-time
+                                 * @description When the build reporter last sampled this build.
+                                 */
+                                updatedAt: string;
+                            }[];
                         }[];
                         engine: {
                             /** @enum {string} */

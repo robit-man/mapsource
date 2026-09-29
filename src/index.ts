@@ -13,7 +13,7 @@ export type {
 } from "./generated/openapi.js";
 export * from "./catalog.js";
 
-export const DEFAULT_BASE_URL = "https://mapsource.io";
+export const DEFAULT_BASE_URL = "https://api.mapsource.io";
 
 export interface MapsourceClientOptions {
   /** Mapsource subscription key. Defaults to MAPSOURCE_API_KEY in Node.js. */

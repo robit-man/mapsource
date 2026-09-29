@@ -11,7 +11,7 @@ describe("Mapsource client", () => {
     const fetch = vi.fn<typeof globalThis.fetch>((input, init) => {
       const request =
         input instanceof Request ? input : new Request(input, init);
-      expect(request.url).toBe("https://mapsource.io/api/status");
+      expect(request.url).toBe("https://api.mapsource.io/api/status");
       expect(request.headers.get("authorization")).toBe("Bearer test_key");
       return Promise.resolve(
         new Response(JSON.stringify({ status: "operational" }), {

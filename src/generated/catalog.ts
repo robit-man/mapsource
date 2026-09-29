@@ -9,7 +9,7 @@ export const operationCatalog = {
     ],
     "path": "/api/status",
     "summary": "Read per-subsystem availability and dataset freshness",
-    "description": "Reports each subsystem independently, the OSM dataset timestamp, minute-diff replication state and lag in seconds, and whether machine payment can settle.\n\nWhen to use: Monitor service availability, dataset freshness, and payment settlement readiness.\n\nWhen not to use: Poll at an appropriate interval; status checks are not required before every API call.",
+    "description": "Reports each subsystem independently, the OSM dataset timestamp, minute-diff replication state and lag in seconds, whether machine payment can settle, the deployed Overpass engine version, and for every dataset the engine build serving it and the data snapshot it answers from. overpass.displayVersion is read from the running engine binary (for example \"0.7.62.11 87bfad18\") and changes automatically when production is upgraded.\n\nWhen to use: Monitor service availability, dataset freshness, payment settlement readiness, and the engine and dataset versions behind each answer.\n\nWhen not to use: Poll at an appropriate interval; status checks are not required before every API call.",
     "access": "authenticated"
   },
   "readMetrics": {
@@ -189,7 +189,7 @@ export const operationCatalog = {
     ],
     "path": "/api/places/reverse",
     "summary": "Reverse geocode a coordinate",
-    "description": "Returns the nearest matching place and alternative candidates. Addressed features are preferred at comparable distances.\n\nWhen to use: Retrieve a place name or address associated with a coordinate.",
+    "description": "Reverse geocodes against the local Photon address index and returns the nearest indexed house number, street, district, city, state, postcode, country and country code with coordinate, distance and OSM identity. Local Overpass candidates remain available as traceable fallbacks.\n\nWhen to use: Retrieve a complete locally indexed postal address or place identity associated with a coordinate.",
     "access": "authenticated"
   },
   "readPlace": {

@@ -13,9 +13,9 @@ export interface paths {
         };
         /**
          * Read per-subsystem availability and dataset freshness
-         * @description Reports each subsystem independently, the OSM dataset timestamp, minute-diff replication state and lag in seconds, and whether machine payment can settle.
+         * @description Reports each subsystem independently, the OSM dataset timestamp, minute-diff replication state and lag in seconds, whether machine payment can settle, the deployed Overpass engine version, and for every dataset the engine build serving it and the data snapshot it answers from. overpass.displayVersion is read from the running engine binary (for example "0.7.62.11 87bfad18") and changes automatically when production is upgraded.
          *
-         *     When to use: Monitor service availability, dataset freshness, and payment settlement readiness.
+         *     When to use: Monitor service availability, dataset freshness, payment settlement readiness, and the engine and dataset versions behind each answer.
          *
          *     When not to use: Poll at an appropriate interval; status checks are not required before every API call.
          */
@@ -337,9 +337,9 @@ export interface paths {
         };
         /**
          * Reverse geocode a coordinate
-         * @description Returns the nearest matching place and alternative candidates. Addressed features are preferred at comparable distances.
+         * @description Reverse geocodes against the local Photon address index and returns the nearest indexed house number, street, district, city, state, postcode, country and country code with coordinate, distance and OSM identity. Local Overpass candidates remain available as traceable fallbacks.
          *
-         *     When to use: Retrieve a place name or address associated with a coordinate.
+         *     When to use: Retrieve a complete locally indexed postal address or place identity associated with a coordinate.
          */
         get: operations["reverseGeocode"];
         put?: never;
@@ -1394,45 +1394,113 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @enum {string} */
-                        status?: "operational" | "degraded" | "maintenance";
-                        engine?: {
-                            mode?: string;
-                            ready?: boolean;
-                            dataTimestamp?: string | null;
-                            replicationLagSeconds?: number | null;
-                            replication?: {
+                        status: "operational" | "degraded" | "maintenance";
+                        gateway: {
+                            version: string;
+                            commit: string | null;
+                            ready: boolean;
+                        };
+                        /** @description The deployed Overpass engine's identity as the running binary reports it. */
+                        overpass: {
+                            /** @description True when the engine answers and reports a parseable version. */
+                            ready: boolean;
+                            /** @description Overpass API semantic version reported by the running engine; null only while it cannot be read. */
+                            version: string | null;
+                            /** @description Source commit the engine binary was built from. */
+                            commit: string | null;
+                            /** @description Exact deployed Overpass engine version/build, read from the running binary, e.g. "0.7.62.11 87bfad18". */
+                            displayVersion: string | null;
+                            engine: {
+                                name: string;
+                                version: string | null;
+                                commit: string | null;
+                            };
+                            gateway: {
+                                name: string;
+                                version: string;
+                                commit: string | null;
+                            };
+                            /** @description Whether historical (attic) queries are available, measured against the engine. */
+                            attic: boolean | null;
+                            /** @description OSM base timestamp of the data the engine answers from. */
+                            datasetTimestamp: string | null;
+                        };
+                        /** @description Each dataset's serving engine build and data snapshot, read from the backend that owns it. */
+                        datasets: {
+                            /** @enum {string} */
+                            id: "overpass" | "vector-tiles" | "tiles" | "routing" | "local-search" | "contours";
+                            label: string;
+                            ready: boolean;
+                            /** @description The engine build serving this dataset, as the backend reports it. */
+                            engine: {
+                                name: string;
+                                version: string | null;
+                                commit: string | null;
+                                display: string | null;
+                            };
+                            /** @description The data snapshot this dataset answers from. */
+                            dataset: {
+                                name: string;
+                                version: string | null;
+                                timestamp: string | null;
+                                source: string;
+                            };
+                            /** @description Why a value is null, when one is. */
+                            detail: string | null;
+                        }[];
+                        engine: {
+                            /** @enum {string} */
+                            mode: "fixture" | "overpass";
+                            ready: boolean;
+                            generation: string;
+                            version: string;
+                            dataTimestamp: string | null;
+                            replicationLagSeconds: number | null;
+                            replication: {
                                 /** @enum {string} */
-                                state?: "healthy" | "degraded" | "stale" | "failed";
-                                localTimestamp?: string | null;
-                                upstreamTimestamp?: string | null;
-                                lagSeconds?: number | null;
-                                sequence?: number | null;
-                                upstreamSequence?: number | null;
-                                sequencesBehind?: number | null;
-                                lastSuccessfulReplication?: string | null;
-                                detail?: string | null;
+                                state: "healthy" | "degraded" | "stale" | "failed";
+                                localTimestamp: string | null;
+                                upstreamTimestamp: string | null;
+                                lagSeconds: number | null;
+                                sequence: number | null;
+                                upstreamSequence: number | null;
+                                sequencesBehind: number | null;
+                                lastSuccessfulReplication: string | null;
+                                detail: string | null;
                             };
                         };
-                        services?: {
-                            id?: string;
-                            ready?: boolean;
-                            detail?: string | null;
-                        }[];
-                        /** @description Subsystem availability, grouped by degradation domain. */
-                        subsystems?: {
-                            id?: string;
-                            label?: string;
-                            domain?: string;
-                            critical?: boolean;
+                        services: {
                             /** @enum {string} */
-                            state?: "operational" | "degraded" | "unavailable";
-                            detail?: string | null;
+                            id: "overpass" | "tiles" | "vector-tiles" | "routing" | "isochrones" | "contours" | "elevation" | "payments";
+                            label: string;
+                            ready: boolean;
+                            detail: string | null;
+                            endpoint: string;
                         }[];
-                        domains?: {
-                            id?: string;
-                            state?: string;
-                            affected?: string[];
+                        subsystems: {
+                            id: string;
+                            label: string;
+                            domain: string;
+                            critical: boolean;
+                            /** @enum {string} */
+                            state: "operational" | "degraded" | "unavailable";
+                            detail: string | null;
                         }[];
+                        domains: {
+                            id: string;
+                            /** @enum {string} */
+                            state: "operational" | "degraded" | "unavailable";
+                            affected: string[];
+                        }[];
+                        billing: {
+                            enabled: boolean;
+                            provider: string;
+                        };
+                        incident: {
+                            active: boolean;
+                            summary: string | null;
+                        };
+                        checkedAt: string;
                     };
                 };
             };
@@ -2116,6 +2184,14 @@ export interface operations {
             /** @description Execute an Overpass QL query */
             200: {
                 headers: {
+                    /** @description Overpass API version the running engine reports. Omitted until the engine has answered a probe. */
+                    "X-Mapsource-Overpass-Version"?: string;
+                    /** @description Source commit of the running engine binary. Omitted with the version. */
+                    "X-Mapsource-Overpass-Commit"?: string;
+                    /** @description Mapsource gateway version. */
+                    "X-Mapsource-Gateway-Version"?: string;
+                    /** @description Mapsource gateway source commit, when known. */
+                    "X-Mapsource-Gateway-Commit"?: string;
                     [name: string]: unknown;
                 };
                 content: {
@@ -2279,6 +2355,14 @@ export interface operations {
             /** @description Execute an Overpass QL query */
             200: {
                 headers: {
+                    /** @description Overpass API version the running engine reports. Omitted until the engine has answered a probe. */
+                    "X-Mapsource-Overpass-Version"?: string;
+                    /** @description Source commit of the running engine binary. Omitted with the version. */
+                    "X-Mapsource-Overpass-Commit"?: string;
+                    /** @description Mapsource gateway version. */
+                    "X-Mapsource-Gateway-Version"?: string;
+                    /** @description Mapsource gateway source commit, when known. */
+                    "X-Mapsource-Gateway-Commit"?: string;
                     [name: string]: unknown;
                 };
                 content: {
@@ -2445,6 +2529,14 @@ export interface operations {
             /** @description Execute Overpass QL with the key in the path */
             200: {
                 headers: {
+                    /** @description Overpass API version the running engine reports. Omitted until the engine has answered a probe. */
+                    "X-Mapsource-Overpass-Version"?: string;
+                    /** @description Source commit of the running engine binary. Omitted with the version. */
+                    "X-Mapsource-Overpass-Commit"?: string;
+                    /** @description Mapsource gateway version. */
+                    "X-Mapsource-Gateway-Version"?: string;
+                    /** @description Mapsource gateway source commit, when known. */
+                    "X-Mapsource-Gateway-Commit"?: string;
                     [name: string]: unknown;
                 };
                 content: {
@@ -2611,6 +2703,14 @@ export interface operations {
             /** @description Execute Overpass QL with the key in the path */
             200: {
                 headers: {
+                    /** @description Overpass API version the running engine reports. Omitted until the engine has answered a probe. */
+                    "X-Mapsource-Overpass-Version"?: string;
+                    /** @description Source commit of the running engine binary. Omitted with the version. */
+                    "X-Mapsource-Overpass-Commit"?: string;
+                    /** @description Mapsource gateway version. */
+                    "X-Mapsource-Gateway-Version"?: string;
+                    /** @description Mapsource gateway source commit, when known. */
+                    "X-Mapsource-Gateway-Commit"?: string;
                     [name: string]: unknown;
                 };
                 content: {

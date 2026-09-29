@@ -22,7 +22,7 @@ async function asset(relativePath: string): Promise<string> {
 async function main() {
   if (command === "help" || command === "--help" || command === "-h") usage();
   if (command === "status") {
-    const response = await createClient().GET("/api/status");
+    const response = await createClient().GET("/status");
     if (response.error) throw new Error(JSON.stringify(response.error));
     process.stdout.write(`${JSON.stringify(response.data, null, 2)}\n`);
     return;

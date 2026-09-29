@@ -134,12 +134,12 @@ try {
   const mcp = json(fetched.mcp.bytes, "MCP card");
   const operations = operationInventory(openapi);
   const uniqueTools = new Set(mcp.tools ?? []);
-  if (operations.length !== 61)
+  if (operations.length !== 62)
     throw new Error(
-      `Expected 61 published method operations; received ${operations.length}`,
+      `Expected 62 published method operations; received ${operations.length}`,
     );
-  if (Object.keys(openapi.paths ?? {}).length !== 57)
-    throw new Error("Expected 57 published OpenAPI paths");
+  if (Object.keys(openapi.paths ?? {}).length !== 58)
+    throw new Error("Expected 58 published OpenAPI paths");
   if (uniqueTools.size !== 13 || (mcp.toolDefinitions ?? []).length !== 13)
     throw new Error("Expected 13 MCP tools and definitions");
 
@@ -160,7 +160,7 @@ try {
     await rename(staging, destination);
   }
   const generated = await readFile(resolve(root, "docs/operations.md"), "utf8");
-  if ((generated.match(/^\| `[^`]+` \|/gm) ?? []).length !== 61)
+  if ((generated.match(/^\| `[^`]+` \|/gm) ?? []).length !== 62)
     throw new Error("Generated operation documentation is incomplete");
   process.stdout.write(
     `Synchronized ${operations.length} operations and ${uniqueTools.size} MCP tools from ${origin}.\n`,

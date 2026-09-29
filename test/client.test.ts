@@ -11,7 +11,7 @@ describe("Mapsource client", () => {
     const fetch = vi.fn<typeof globalThis.fetch>((input, init) => {
       const request =
         input instanceof Request ? input : new Request(input, init);
-      expect(request.url).toBe("https://api.mapsource.io/api/status");
+      expect(request.url).toBe("https://api.mapsource.io/status");
       expect(request.headers.get("authorization")).toBe("Bearer test_key");
       return Promise.resolve(
         new Response(JSON.stringify({ status: "operational" }), {
@@ -21,7 +21,7 @@ describe("Mapsource client", () => {
       );
     });
     const response = await createClient({ apiKey: "test_key", fetch }).GET(
-      "/api/status",
+      "/status",
     );
     expect(response.data).toEqual({ status: "operational" });
     expect(fetch).toHaveBeenCalledOnce();
@@ -31,7 +31,7 @@ describe("Mapsource client", () => {
     expect(isOperationId("computeRoute")).toBe(true);
     expect(getOperation("computeRoute")).toMatchObject({
       method: "POST",
-      path: "/api/route",
+      path: "/route",
       category: "navigation",
     });
   });

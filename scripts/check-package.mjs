@@ -36,9 +36,9 @@ if (
   throw new Error(
     "The mapsource CLI must use a normalized bin path and retain its shebang",
   );
-if (ids.size !== 61)
+if (ids.size !== 62)
   throw new Error(
-    `OpenAPI contains ${ids.size} method operations, expected 61`,
+    `OpenAPI contains ${ids.size} method operations, expected 62`,
   );
 if (
   (mcp.tools ?? []).length !== 13 ||

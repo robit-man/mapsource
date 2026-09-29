@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-    "/api/status": {
+    "/status": {
         parameters: {
             query?: never;
             header?: never;
@@ -28,7 +28,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/metrics": {
+    "/metrics": {
         parameters: {
             query?: never;
             header?: never;
@@ -52,7 +52,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/tiles/catalog": {
+    "/tiles/catalog": {
         parameters: {
             query?: never;
             header?: never;
@@ -74,7 +74,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/basemap/contract": {
+    "/basemap/contract": {
         parameters: {
             query?: never;
             header?: never;
@@ -98,7 +98,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/interpreter": {
+    "/interpreter": {
         parameters: {
             query?: never;
             header?: never;
@@ -130,7 +130,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/{key}/interpreter": {
+    "/{key}/interpreter": {
         parameters: {
             query?: never;
             header?: never;
@@ -162,7 +162,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/entities/resolve": {
+    "/entities/resolve": {
         parameters: {
             query?: never;
             header?: never;
@@ -186,7 +186,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/entities/{entityId}": {
+    "/entities/{entityId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -208,7 +208,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/search": {
+    "/places/search": {
         parameters: {
             query?: never;
             header?: never;
@@ -232,7 +232,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/lookup": {
+    "/places/lookup": {
         parameters: {
             query?: never;
             header?: never;
@@ -256,7 +256,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/discover": {
+    "/places/discover": {
         parameters: {
             query?: never;
             header?: never;
@@ -280,7 +280,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/autocomplete": {
+    "/places/autocomplete": {
         parameters: {
             query?: never;
             header?: never;
@@ -304,7 +304,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/nearby": {
+    "/places/nearby": {
         parameters: {
             query?: never;
             header?: never;
@@ -328,7 +328,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/reverse": {
+    "/places/reverse": {
         parameters: {
             query?: never;
             header?: never;
@@ -350,7 +350,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/places/{osmType}/{osmId}": {
+    "/places/{osmType}/{osmId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -372,7 +372,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/geocode": {
+    "/geocode": {
         parameters: {
             query?: never;
             header?: never;
@@ -396,7 +396,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/route": {
+    "/route": {
         parameters: {
             query?: never;
             header?: never;
@@ -420,7 +420,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/matrix": {
+    "/matrix": {
         parameters: {
             query?: never;
             header?: never;
@@ -444,7 +444,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/isochrone": {
+    "/isochrone": {
         parameters: {
             query?: never;
             header?: never;
@@ -466,7 +466,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/map-match": {
+    "/map-match": {
         parameters: {
             query?: never;
             header?: never;
@@ -488,7 +488,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/snap": {
+    "/snap": {
         parameters: {
             query?: never;
             header?: never;
@@ -510,7 +510,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/optimize": {
+    "/optimize": {
         parameters: {
             query?: never;
             header?: never;
@@ -532,7 +532,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/analyze": {
+    "/analyze": {
         parameters: {
             query?: never;
             header?: never;
@@ -556,7 +556,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/compute": {
+    "/compute": {
         parameters: {
             query?: never;
             header?: never;
@@ -580,7 +580,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/results/{id}": {
+    "/results/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -604,7 +604,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account": {
+    "/account": {
         parameters: {
             query?: never;
             header?: never;
@@ -626,7 +626,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects": {
+    "/account/projects": {
         parameters: {
             query?: never;
             header?: never;
@@ -648,7 +648,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects/{project}": {
+    "/account/projects/{project}": {
         parameters: {
             query?: never;
             header?: never;
@@ -670,7 +670,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects/{project}/service-accounts": {
+    "/account/projects/{project}/service-accounts": {
         parameters: {
             query?: never;
             header?: never;
@@ -698,7 +698,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects/{project}/service-accounts/{id}": {
+    "/account/projects/{project}/service-accounts/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -720,7 +720,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects/{project}/keys": {
+    "/account/projects/{project}/keys": {
         parameters: {
             query?: never;
             header?: never;
@@ -750,7 +750,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects/{project}/keys/{id}": {
+    "/account/projects/{project}/keys/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -772,7 +772,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/projects/{project}/budget": {
+    "/account/projects/{project}/budget": {
         parameters: {
             query?: never;
             header?: never;
@@ -794,7 +794,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/usage": {
+    "/account/usage": {
         parameters: {
             query?: never;
             header?: never;
@@ -816,7 +816,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/account/audit": {
+    "/account/audit": {
         parameters: {
             query?: never;
             header?: never;
@@ -838,7 +838,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/elevation": {
+    "/elevation": {
         parameters: {
             query?: never;
             header?: never;
@@ -862,7 +862,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/terrain/{z}/{x}/{y}.png": {
+    "/terrain/{z}/{x}/{y}.png": {
         parameters: {
             query?: never;
             header?: never;
@@ -886,7 +886,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/contours": {
+    "/contours": {
         parameters: {
             query?: never;
             header?: never;
@@ -908,7 +908,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles": {
+    "/styles": {
         parameters: {
             query?: never;
             header?: never;
@@ -930,7 +930,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/{id}/style.json": {
+    "/styles/{id}/style.json": {
         parameters: {
             query?: never;
             header?: never;
@@ -952,7 +952,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/{id}/manifest.json": {
+    "/styles/{id}/manifest.json": {
         parameters: {
             query?: never;
             header?: never;
@@ -974,7 +974,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/compile": {
+    "/styles/compile": {
         parameters: {
             query?: never;
             header?: never;
@@ -998,7 +998,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/profiles": {
+    "/styles/profiles": {
         parameters: {
             query?: never;
             header?: never;
@@ -1020,7 +1020,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/intent": {
+    "/styles/intent": {
         parameters: {
             query?: never;
             header?: never;
@@ -1044,7 +1044,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/schema.json": {
+    "/styles/schema.json": {
         parameters: {
             query?: never;
             header?: never;
@@ -1068,7 +1068,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/{id}/revisions": {
+    "/styles/{id}/revisions": {
         parameters: {
             query?: never;
             header?: never;
@@ -1090,7 +1090,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/{id}/diff": {
+    "/styles/{id}/diff": {
         parameters: {
             query?: never;
             header?: never;
@@ -1114,7 +1114,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/styles/profiles/{id}": {
+    "/styles/profiles/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1136,7 +1136,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/glyphs": {
+    "/glyphs": {
         parameters: {
             query?: never;
             header?: never;
@@ -1158,7 +1158,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/fonts": {
+    "/fonts": {
         parameters: {
             query?: never;
             header?: never;
@@ -1180,7 +1180,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/fonts/{name}": {
+    "/fonts/{name}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1202,7 +1202,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/render/static": {
+    "/render/static": {
         parameters: {
             query?: never;
             header?: never;
@@ -1226,7 +1226,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/tiles/vector/{z}/{x}/{y}.pbf": {
+    "/tiles/vector/{z}/{x}/{y}.pbf": {
         parameters: {
             query?: never;
             header?: never;
@@ -1248,7 +1248,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/tiles/{style}/{z}/{x}/{y}.png": {
+    "/tiles/{style}/{z}/{x}/{y}.png": {
         parameters: {
             query?: never;
             header?: never;
@@ -1270,7 +1270,29 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/glyphs/{fontstack}/{range}.pbf": {
+    "/tiles/styles/{style}/{z}/{x}/{y}.png": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Render a custom style as a raster tile
+         * @description Renders a 256-pixel XYZ PNG from any shipped vector preset or an owned saved style profile. A profile can be pinned to a revision.
+         *
+         *     When to use: Display a Mapsource vector preset or fully customized saved style in a raster-only map client.
+         */
+        get: operations["renderStyleTile"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/glyphs/{fontstack}/{range}.pbf": {
         parameters: {
             query?: never;
             header?: never;
@@ -1292,7 +1314,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/usage": {
+    "/usage": {
         parameters: {
             query?: never;
             header?: never;
@@ -1314,7 +1336,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/api/x402/interpreter": {
+    "/x402/interpreter": {
         parameters: {
             query?: never;
             header?: never;
@@ -1890,6 +1912,12 @@ export interface operations {
                             nativeMaxZoom?: number;
                             url?: string;
                         }[];
+                        styledRaster?: {
+                            url?: string;
+                            tileSize?: number;
+                            maxzoom?: number;
+                            presets?: string[];
+                        };
                         vector?: {
                             id?: string;
                             minzoom?: number;
@@ -11771,6 +11799,174 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Error with a stable machine code. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: {
+                            /** @constant */
+                            version: "1";
+                            /**
+                             * @description Stable machine code. Decide retries from this, not the status class.
+                             * @enum {string}
+                             */
+                            code: "BAD_REQUEST" | "AUTH_REQUIRED" | "AMBIGUOUS_CREDENTIAL" | "INVALID_KEY" | "ENTITLEMENT_INACTIVE" | "RATE_LIMITED" | "CONCURRENCY_LIMITED" | "MONTHLY_QUOTA_EXHAUSTED" | "QUERY_TOO_LARGE" | "TIMEOUT_EXCEEDS_PLAN" | "MAXSIZE_EXCEEDS_PLAN" | "ATTIC_UNSUPPORTED" | "RESPONSE_TOO_LARGE" | "UPSTREAM_UNAVAILABLE" | "UPSTREAM_TIMEOUT" | "BILLING_NOT_CONFIGURED" | "BILLING_PROFILE_UNAVAILABLE" | "BILLING_PROVIDER_ERROR" | "CHECKOUT_UNAUTHORIZED" | "CHECKOUT_NOT_READY" | "KEY_ALREADY_CLAIMED" | "ADMIN_AUTH_REQUIRED" | "ADMIN_FORBIDDEN" | "ADMIN_NOT_CONFIGURED" | "NOT_FOUND" | "SCOPE_FORBIDDEN" | "BUDGET_EXCEEDED" | "PAYMENT_REQUIRED" | "PIPELINE_INVALID" | "PIPELINE_STEP_FAILED" | "PIPELINE_DEADLINE_EXCEEDED" | "HANDLE_EXPIRED" | "HANDLE_QUOTA_EXCEEDED" | "STYLE_INVALID" | "PROFILE_LIMIT_REACHED" | "INTERNAL_ERROR";
+                            message: string;
+                            /** @description Quote this when reporting a problem. */
+                            requestId: string;
+                            /** @description True when the identical request could succeed on a later attempt. */
+                            retryable: boolean;
+                            /** @description Machine-readable specifics for this code, shaped by the code. */
+                            details?: Record<string, never>;
+                            limit?: number;
+                            value?: number;
+                            issues?: {
+                                /** @enum {string} */
+                                level: "warning" | "error";
+                                path: string;
+                                message: string;
+                            }[];
+                        };
+                    };
+                };
+            };
+            /** @description Error with a stable machine code. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: {
+                            /** @constant */
+                            version: "1";
+                            /**
+                             * @description Stable machine code. Decide retries from this, not the status class.
+                             * @enum {string}
+                             */
+                            code: "BAD_REQUEST" | "AUTH_REQUIRED" | "AMBIGUOUS_CREDENTIAL" | "INVALID_KEY" | "ENTITLEMENT_INACTIVE" | "RATE_LIMITED" | "CONCURRENCY_LIMITED" | "MONTHLY_QUOTA_EXHAUSTED" | "QUERY_TOO_LARGE" | "TIMEOUT_EXCEEDS_PLAN" | "MAXSIZE_EXCEEDS_PLAN" | "ATTIC_UNSUPPORTED" | "RESPONSE_TOO_LARGE" | "UPSTREAM_UNAVAILABLE" | "UPSTREAM_TIMEOUT" | "BILLING_NOT_CONFIGURED" | "BILLING_PROFILE_UNAVAILABLE" | "BILLING_PROVIDER_ERROR" | "CHECKOUT_UNAUTHORIZED" | "CHECKOUT_NOT_READY" | "KEY_ALREADY_CLAIMED" | "ADMIN_AUTH_REQUIRED" | "ADMIN_FORBIDDEN" | "ADMIN_NOT_CONFIGURED" | "NOT_FOUND" | "SCOPE_FORBIDDEN" | "BUDGET_EXCEEDED" | "PAYMENT_REQUIRED" | "PIPELINE_INVALID" | "PIPELINE_STEP_FAILED" | "PIPELINE_DEADLINE_EXCEEDED" | "HANDLE_EXPIRED" | "HANDLE_QUOTA_EXCEEDED" | "STYLE_INVALID" | "PROFILE_LIMIT_REACHED" | "INTERNAL_ERROR";
+                            message: string;
+                            /** @description Quote this when reporting a problem. */
+                            requestId: string;
+                            /** @description True when the identical request could succeed on a later attempt. */
+                            retryable: boolean;
+                            /** @description Machine-readable specifics for this code, shaped by the code. */
+                            details?: Record<string, never>;
+                            limit?: number;
+                            value?: number;
+                            issues?: {
+                                /** @enum {string} */
+                                level: "warning" | "error";
+                                path: string;
+                                message: string;
+                            }[];
+                        };
+                    };
+                };
+            };
+            /** @description Error with a stable machine code. */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: {
+                            /** @constant */
+                            version: "1";
+                            /**
+                             * @description Stable machine code. Decide retries from this, not the status class.
+                             * @enum {string}
+                             */
+                            code: "BAD_REQUEST" | "AUTH_REQUIRED" | "AMBIGUOUS_CREDENTIAL" | "INVALID_KEY" | "ENTITLEMENT_INACTIVE" | "RATE_LIMITED" | "CONCURRENCY_LIMITED" | "MONTHLY_QUOTA_EXHAUSTED" | "QUERY_TOO_LARGE" | "TIMEOUT_EXCEEDS_PLAN" | "MAXSIZE_EXCEEDS_PLAN" | "ATTIC_UNSUPPORTED" | "RESPONSE_TOO_LARGE" | "UPSTREAM_UNAVAILABLE" | "UPSTREAM_TIMEOUT" | "BILLING_NOT_CONFIGURED" | "BILLING_PROFILE_UNAVAILABLE" | "BILLING_PROVIDER_ERROR" | "CHECKOUT_UNAUTHORIZED" | "CHECKOUT_NOT_READY" | "KEY_ALREADY_CLAIMED" | "ADMIN_AUTH_REQUIRED" | "ADMIN_FORBIDDEN" | "ADMIN_NOT_CONFIGURED" | "NOT_FOUND" | "SCOPE_FORBIDDEN" | "BUDGET_EXCEEDED" | "PAYMENT_REQUIRED" | "PIPELINE_INVALID" | "PIPELINE_STEP_FAILED" | "PIPELINE_DEADLINE_EXCEEDED" | "HANDLE_EXPIRED" | "HANDLE_QUOTA_EXCEEDED" | "STYLE_INVALID" | "PROFILE_LIMIT_REACHED" | "INTERNAL_ERROR";
+                            message: string;
+                            /** @description Quote this when reporting a problem. */
+                            requestId: string;
+                            /** @description True when the identical request could succeed on a later attempt. */
+                            retryable: boolean;
+                            /** @description Machine-readable specifics for this code, shaped by the code. */
+                            details?: Record<string, never>;
+                            limit?: number;
+                            value?: number;
+                            issues?: {
+                                /** @enum {string} */
+                                level: "warning" | "error";
+                                path: string;
+                                message: string;
+                            }[];
+                        };
+                    };
+                };
+            };
+            /** @description Error with a stable machine code. */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        error: {
+                            /** @constant */
+                            version: "1";
+                            /**
+                             * @description Stable machine code. Decide retries from this, not the status class.
+                             * @enum {string}
+                             */
+                            code: "BAD_REQUEST" | "AUTH_REQUIRED" | "AMBIGUOUS_CREDENTIAL" | "INVALID_KEY" | "ENTITLEMENT_INACTIVE" | "RATE_LIMITED" | "CONCURRENCY_LIMITED" | "MONTHLY_QUOTA_EXHAUSTED" | "QUERY_TOO_LARGE" | "TIMEOUT_EXCEEDS_PLAN" | "MAXSIZE_EXCEEDS_PLAN" | "ATTIC_UNSUPPORTED" | "RESPONSE_TOO_LARGE" | "UPSTREAM_UNAVAILABLE" | "UPSTREAM_TIMEOUT" | "BILLING_NOT_CONFIGURED" | "BILLING_PROFILE_UNAVAILABLE" | "BILLING_PROVIDER_ERROR" | "CHECKOUT_UNAUTHORIZED" | "CHECKOUT_NOT_READY" | "KEY_ALREADY_CLAIMED" | "ADMIN_AUTH_REQUIRED" | "ADMIN_FORBIDDEN" | "ADMIN_NOT_CONFIGURED" | "NOT_FOUND" | "SCOPE_FORBIDDEN" | "BUDGET_EXCEEDED" | "PAYMENT_REQUIRED" | "PIPELINE_INVALID" | "PIPELINE_STEP_FAILED" | "PIPELINE_DEADLINE_EXCEEDED" | "HANDLE_EXPIRED" | "HANDLE_QUOTA_EXCEEDED" | "STYLE_INVALID" | "PROFILE_LIMIT_REACHED" | "INTERNAL_ERROR";
+                            message: string;
+                            /** @description Quote this when reporting a problem. */
+                            requestId: string;
+                            /** @description True when the identical request could succeed on a later attempt. */
+                            retryable: boolean;
+                            /** @description Machine-readable specifics for this code, shaped by the code. */
+                            details?: Record<string, never>;
+                            limit?: number;
+                            value?: number;
+                            issues?: {
+                                /** @enum {string} */
+                                level: "warning" | "error";
+                                path: string;
+                                message: string;
+                            }[];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    renderStyleTile: {
+        parameters: {
+            query?: {
+                /** @description Optional saved profile revision. */
+                revision?: number;
+            };
+            header?: never;
+            path: {
+                /** @description Preset ID or an owned profile slug. */
+                style: string;
+                /** @description Zoom. */
+                z: number;
+                /** @description Tile column. */
+                x: number;
+                /** @description Tile row. */
+                y: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Render a custom style as a raster tile */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "image/png": string;
+                };
             };
             /** @description Error with a stable machine code. */
             400: {

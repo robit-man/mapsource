@@ -14,9 +14,8 @@ export type {
 export * from "./catalog.js";
 
 /**
- * The dedicated API host. Requests use the canonical `/api/...` paths; this
- * host also answers every path without the `/api` prefix, and
- * https://mapsource.io serves the prefixed paths as an alias.
+ * The Mapsource API host. Paths such as `/interpreter` and `/status` are
+ * relative to it; each also works with an `/api` prefix.
  */
 export const DEFAULT_BASE_URL = "https://api.mapsource.io";
 
@@ -24,7 +23,8 @@ export interface MapsourceClientOptions {
   /** Mapsource subscription key. Defaults to MAPSOURCE_API_KEY in Node.js. */
   apiKey?: string;
   /**
-   * Origin only, without `/api`: the client appends canonical `/api/...` paths.
+   * The API base URL. Paths are appended to it, so use
+   * `https://mapsource.io/api` to reach the website host instead.
    * Override only for an explicitly trusted Mapsource-compatible deployment.
    */
   baseUrl?: string;

@@ -12,7 +12,7 @@ npm install mapsource
 import { createClient } from "mapsource";
 
 const mapsource = createClient({ apiKey: process.env.MAPSOURCE_API_KEY });
-const { data, error, response } = await mapsource.POST("/api/route", {
+const { data, error, response } = await mapsource.POST("/route", {
   body: {
     locations: [
       { lat: 47.6062, lon: -122.3321 },
@@ -32,13 +32,15 @@ The path, query, body, and response are inferred from the published OpenAPI cont
 
 ## Base URL
 
-The client calls `https://api.mapsource.io` by default, using the canonical `/api/...` paths from the OpenAPI contract (`/api/interpreter`, `/api/status`, …). On that host every path also works without the `/api` prefix (`https://api.mapsource.io/interpreter`, `https://api.mapsource.io/{key}/interpreter`), which helps when a raw HTTP tool or legacy Overpass client builds URLs itself. `https://mapsource.io` serves the prefixed paths as an alias. Pass `baseUrl` to `createClient()` to override the origin.
+The client calls `https://api.mapsource.io`, with paths such as `/interpreter`, `/{key}/interpreter`, `/status` and `/route` relative to it. Every path also works with an `/api` prefix; to use the website host, pass `baseUrl: "https://mapsource.io/api"` to `createClient()`.
+
+Version 0.2.0 moved the typed paths from `/api/route` to `/route` and so on. Drop the `/api` prefix from calls when upgrading from 0.1.x.
 
 ## Every offering, one generated contract
 
 The package contains the complete synchronized machine surface:
 
-- 59 canonical capabilities plus the two documented GET calling conventions—61 typed OpenAPI method operation IDs across discovery, navigation, terrain, cartography, compute, delivery, account, and service metadata.
+- 60 canonical capabilities plus the two documented GET calling conventions—62 typed OpenAPI method operation IDs across discovery, navigation, terrain, cartography, compute, delivery, account, and service metadata.
 - `mapsource/openapi.json` and generated `paths`, `operations`, and `components` TypeScript types.
 - `mapsource/mcp.json`, `mapsource/llms.txt`, and `mapsource/llms-full.txt` for agent discovery.
 - `mapsource/catalog` and `mapsource catalog` for a compact runtime/CLI inventory.
@@ -47,7 +49,7 @@ The package contains the complete synchronized machine surface:
 ```ts
 import { operationCatalog, operationsByCategory } from "mapsource/catalog";
 
-console.log(operationCatalog.computeIsochrone.path); // /api/isochrone
+console.log(operationCatalog.computeIsochrone.path); // /isochrone
 console.log(operationsByCategory.navigation);
 ```
 
@@ -69,7 +71,7 @@ Use one project-scoped key per environment. The client places it only in the Bea
 ```ts
 import { toMapsourceError } from "mapsource";
 
-const result = await mapsource.GET("/api/elevation", {
+const result = await mapsource.GET("/elevation", {
   params: { query: { lat: 45.3735, lon: -121.6959 } },
 });
 if (result.error) throw toMapsourceError(result.response.status, result.error);
